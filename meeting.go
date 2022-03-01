@@ -34,10 +34,15 @@ type Meeting struct {
 
 // New generates a new meeting for the provided team. Each team may either be
 // using the default service, meet.jit.si, or their own installation.
-func (m *MeetingGenerator) New(teamID, teamName string) (Meeting, error) {
+func (m *MeetingGenerator) New(channelName string, channelID string, teamID, teamName string) (Meeting, error) {
 	var mtg Meeting
-	mtg.RoomName = RandomName()
-
+	// Not direct message
+	if (channelName && channelID && !strings.HasPrefix(channelID, "D")) {
+		mtg.RoomName = channelName
+	} else {
+		mtg.RoomName = RandomName()
+	}
+	
 	srv, err := m.ServerConfigReader.Get(teamID)
 	if err != nil {
 		return Meeting{}, err

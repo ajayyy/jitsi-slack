@@ -244,7 +244,9 @@ func (s *SlashCommandHandlers) dispatchInvites(w http.ResponseWriter, r *http.Re
 	// Generate the meeting data.
 	teamID := r.PostFormValue("team_id")
 	teamName := r.PostFormValue("team_domain")
-	meeting, err := s.MeetingGenerator.New(teamID, teamName)
+	channelName := r.PostFormValue("channel_name")
+	channelID := r.PostFormValue("channel_id")
+	meeting, err := s.MeetingGenerator.New(channelName, channelID, teamID, teamName)
 	if err != nil {
 		hlog.FromRequest(r).Error().
 			Err(err).
