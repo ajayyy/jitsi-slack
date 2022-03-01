@@ -22,8 +22,8 @@ const (
 	roomTemplate = `{
 		"response_type":"in_channel",
 		"attachments":[{
-			"fallback":"Meeting started on %s",
-			"title":"Meeting started on %s",
+			"fallback":"Meeting started at %s",
+			"title":"Meeting started at %s",
 			"color":"#3AA3E3",
 			"attachment_type":"default",
 			"actions":[{

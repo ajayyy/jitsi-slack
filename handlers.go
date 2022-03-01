@@ -259,7 +259,7 @@ func (s *SlashCommandHandlers) dispatchInvites(w http.ResponseWriter, r *http.Re
 	if matches == nil {
 		w.Header().Set("Content-type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		resp := fmt.Sprintf(roomTemplate, meeting.Host, meeting.Host, meeting.URL)
+		resp := fmt.Sprintf(roomTemplate, meeting.URL, meeting.URL, meeting.URL)
 		w.Write([]byte(resp))
 		return
 	}
